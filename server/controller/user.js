@@ -1,4 +1,3 @@
-const { response } = require('express')
 const User = require('../database/users')
 const jwt = require('jsonwebtoken')
 
@@ -14,7 +13,7 @@ function generateToken(user){
 
 async function registerUser(req,res){
     try{
-        const {fullName,email,password,userName} = req.body
+        const {fullName,email,password,userName,avatar} = req.body
 
         let user = await User.findOne({
             email: email
@@ -25,11 +24,19 @@ async function registerUser(req,res){
                 message: 'User already registered with this email'
             })
         }
-        user = await User.create({
+        let user1 = await User.findOne({
+            userName : userName
+        })
+        if(user1){
+            return res.status(403).send({
+                message: 'User already registered with this userName'
+            })
+        }
+        await User.create({
             fullName,email,password,userName,avatar
         })
 
-        return response.send({
+        return res.send({
             message: 'Registration successful'
         })
     }
@@ -95,4 +102,57 @@ async function checkLoggedIn(req,res){
     }
 }
 
-module.exports = {registerUser,logIn,checkLoggedIn}
+async function updateUser(req,res){
+    try{
+        const id = req.params.id
+        const data = req.body
+
+        await User.findByIdAndUpdate(id, data)
+        return res.send({
+            message: "User Updated"
+        })
+    }
+    catch(err){
+        return res.status(500).send({
+            message:err.message
+        })
+    }
+}
+
+async function changePassword(req,res){
+    try{
+        const id = req.params.id
+        const {email,password,newPassword} = req.body
+
+        let existingUser = await User.findOne({email:email})
+        if(!existingUser){
+            return res.status(400).send({
+                message:'userName not correct'
+            })
+        }
+        if(existingUser.password !== password){
+            return res.status(400).send({
+                message:'current password is incorrect'
+            })
+        }
+        await User.findByIdAndUpdate(id, {password:newPassword})
+
+        return res.send({
+            message:'password changed successfully'
+        })
+
+    }
+    catch(err){
+        return res.status(400).send({
+            message:err.message
+        })
+    }
+}
+
+module.exports = {
+    registerUser,
+    logIn,
+    checkLoggedIn,
+    updateUser,
+    changePassword
+}

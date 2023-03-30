@@ -1,13 +1,10 @@
-const express = require('express')
-const { registerUser,logIn,checkLoggedIn } = require('../controller/controller.js')
-const authMiddleware = require('../middleware/authMiddleware')
-
 const multer = require('multer');
 const AWS = require("aws-sdk");
 const dotenv = require("dotenv");
 dotenv.config();
+const express = require('express');
 
-const allRoutes = express.Router()
+const uploadFile = express.Router()
 
 const bucketName = process.env.AWS_BUCKET_NAME;
 
@@ -59,7 +56,7 @@ const uploadToS3 = (fileData) => {
     });
 };
 
-allRoutes.post("/upload", upload.single("image"), async (req, res) => {
+uploadFile.post("/upload", upload.single("image"), async (req, res) => {
     // console.log(req.file + "2");
     if (req.file) {
         let upFile = await uploadToS3(req.file.buffer);
@@ -70,10 +67,4 @@ allRoutes.post("/upload", upload.single("image"), async (req, res) => {
     }
 });
 
-allRoutes.post('/register', registerUser)
-allRoutes.post('/login',logIn)
-allRoutes.get('/loggedInUser',authMiddleware,checkLoggedIn)
-
-
-
-module.exports = allRoutes
+module.exports = uploadFile
