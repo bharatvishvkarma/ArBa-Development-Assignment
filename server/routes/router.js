@@ -1,5 +1,7 @@
 const express = require('express')
-const { registerUser } = require('../controller/controller.js')
+const { registerUser,logIn,checkLoggedIn } = require('../controller/controller.js')
+const authMiddleware = require('../middleware/authMiddleware')
+
 const multer = require('multer');
 const AWS = require("aws-sdk");
 const dotenv = require("dotenv");
@@ -69,6 +71,9 @@ allRoutes.post("/upload", upload.single("image"), async (req, res) => {
 });
 
 allRoutes.post('/register', registerUser)
+allRoutes.post('/login',logIn)
+allRoutes.get('/loggedInUser',authMiddleware,checkLoggedIn)
+
 
 
 module.exports = allRoutes
