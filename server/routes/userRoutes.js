@@ -5,7 +5,7 @@ const { registerUser,
     updateUser,
     changePassword
     } = require('../controller/user.js')
-const authMiddleware = require('../middleware/authMiddleware')
+const authMiddleware = require('../middleware/authMiddleware.js')
 const express = require('express')
 const user = express.Router()
 
