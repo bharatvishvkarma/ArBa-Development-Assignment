@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url =  'https://long-tan-sea-lion-gown.cyclic.app/product'
+const url =  'https://long-tan-sea-lion-gown.cyclic.app'
 
 export const updateImg = async (file)=>{
     return await axios.post(`${url}/file/upload`,file)
