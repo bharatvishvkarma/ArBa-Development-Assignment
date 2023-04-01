@@ -1,0 +1,29 @@
+.allProducts{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-content: space-around;
+    gap: 30px;
+    position: relative;
+    /* z-index: -1; */
+    margin-top: 70px;
+}
+
+.main{
+    width: 80%;
+    margin: auto;
+}
+
+.btnAllProducts{
+    width: 70%;
+    margin: auto;
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.btnAllProducts button{
+    border: none;
+    background-color: teal;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+}

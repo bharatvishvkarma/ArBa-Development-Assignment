@@ -1,0 +1,92 @@
+
+.container {
+    display: flex;
+    gap: 50px;
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+}
+.container:nth-child(1){
+    margin-top: 50px;
+}
+.link{
+    text-decoration: none;
+    color: rgb(4, 151, 214);
+}
+
+.circle{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: teal;
+    margin: auto;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    /* max-width: 400px; */
+    min-width: 300px;
+}
+
+.form input{
+    margin: 15px 0;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: teal
+    
+}
+
+.wallpaperImage{
+    width: 80%;
+    min-width: 300px;
+    
+}
+
+.register{
+    background-color: teal;
+    border: none;
+    padding: 13px 0;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.register:hover{
+    background-color: rgb(4, 103, 103);
+}
+.register[disabled]{
+    background-color: rgb(220, 219, 219);
+}
+
+.form input:focus{
+    border-color: rgb(11, 78, 78);
+}
+
+.suggestions{
+    margin: 0px;
+    margin-top: -10px;
+    text-align: left;
+    font-size: 12px;
+    color: red;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff;
+    border-top-color: #666;
+    border-radius: 50%;
+    animation: spin 0.8s ease-in-out infinite;
+  }

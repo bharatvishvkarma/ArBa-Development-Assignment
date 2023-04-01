@@ -1,0 +1,14 @@
+.allProducts{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-content: space-around;
+    gap: 30px;
+    position: relative;
+    /* z-index: -1; */
+    margin-top: 70px;
+}
+
+.main{
+    width: 80%;
+    margin: auto;
+}
