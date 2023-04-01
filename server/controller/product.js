@@ -6,10 +6,11 @@ async function addProduct(req,res){
     try{
         const data = req.body
 
-        await Product.create(data)
-
+        let product = await Product.create(data)
+        console.log(product)
         return res.send({
-            message:"Product added successfully"
+            message:"Product added successfully",
+            product:product
         })
     }
     catch(err){

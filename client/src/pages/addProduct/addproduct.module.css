@@ -1,0 +1,12 @@
+.inputBox{
+    display:flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.inputBox input ,button{
+    margin: 10px;
+}

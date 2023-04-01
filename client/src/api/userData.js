@@ -17,3 +17,15 @@ export const logIn = async(user)=>{
 export const getAllProducts = async()=>{
     return await axios.get(`${url}/product/getall`)
 }
+
+export const getCategories = async()=>{
+    return await axios.get(`${url}/category/get`)
+}
+
+export const addOneCategory = async(data)=>{
+    return await axios.post(`${url}/category/add`,data)
+}
+
+export const addProduct = async(data)=>{
+    return await axios.post(`${url}/product/add`,data)
+}

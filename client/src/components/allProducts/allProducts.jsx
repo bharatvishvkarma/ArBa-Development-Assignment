@@ -9,7 +9,7 @@ import addProductstoStore from "../../redux/action/productaction"
 import styles from "./allProducts.module.css"
 import addToCart from "../../redux/action/addToCart"
 
-function AllProducts({setLoad}) {
+function AllProducts({setLoad = function(){}}) {
 
     const { isLoggedIn, user, products, cartProducts } = useSelector(state => state)
     // console.log(products)
@@ -35,20 +35,20 @@ function AllProducts({setLoad}) {
                 })
         }
         setLoading(false)
-        setLoad(true)
-        
+        setTimeout(()=>{
+            setLoad(true)
+        },2000)
     }, [products])
-    console.log(products)
+    // console.log(products)
     function addQuantity(_id) {
         for (let i = 0; i < products.length; i++) {
             if (products[i]._id == _id) {
                 products[i].quantity++;
                 if (products[i].quantity == 1) {
-                    // cartProducts.push(products[i])
-                    let arr = []
-                    arr.push(products[i])
-                    dispatch(addToCart(arr))
-                    localStorage.setItem('cart', JSON.stringify(arr))
+                    cartProducts.push(products[i])
+                    
+                    dispatch(addToCart(cartProducts))
+                    localStorage.setItem('cart', JSON.stringify(cartProducts))
                 }
                 else {
                     for (let j = 0; j < cartProducts.length; j++) {

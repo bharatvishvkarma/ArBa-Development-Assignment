@@ -10,7 +10,7 @@ function Cart(){
 
     const {products, cartProducts } = useSelector(state => state)
     const dispatch = useDispatch()
-    console.log(cartProducts)
+    // console.log(cartProducts)
     const navigate = useNavigate()
     function addQuantity(_id){
         for(let i=0;i<products.length;i++){

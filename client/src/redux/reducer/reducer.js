@@ -6,7 +6,8 @@ let intialData = {
         
     },
     products: JSON.parse(localStorage.getItem('allProducts')) || [],
-    cartProducts: JSON.parse(localStorage.getItem('cart')) || []
+    cartProducts: JSON.parse(localStorage.getItem('cart')) || [],
+    categories : []
 }
 
 const reducer = (state=intialData,action)=>{
@@ -21,6 +22,12 @@ const reducer = (state=intialData,action)=>{
     if(action.type === 'addToCart'){
         state = {...state, cartProducts:action.payload}
         localStorage.setItem('cart',JSON.stringify(action.payload))
+    }
+    if(action.type === 'logout'){
+        state = {...state, isLoggedIn:false,user:{}}
+    }
+    if(action.type === 'addCategory'){
+        state = {...state, categories:action.payload}
     }
     return state
 }

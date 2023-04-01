@@ -11,12 +11,15 @@ import getData from './redux/action/action';
 import Navbar from './components/navbar/navbar';
 import Cart from './pages/cart/cart';
 import AllProducts from './components/allProducts/allProducts';
+import MyStore from './pages/mystore/mystore';
+import AddProduct from './pages/addProduct/addproduct';
+import AddCategory from './pages/addProduct/addcategory';
 
 
 function App(){
   const {isLoggedIn,user} = useSelector(state =>state)
 
-  console.log(user)
+  // console.log(user)
   const dispatch = useDispatch()
   let token = localStorage.getItem('token')
   useEffect(()=>{
@@ -28,11 +31,14 @@ function App(){
       <ToastContainer />
       <Navbar />
       <Routes>
-        <Route path = "/" element = {<Home/>} />
+        <Route path = "/" element = {isLoggedIn?<Home/>:<Navigate to ='/login'/>} />
         <Route path = "/login" element = {isLoggedIn?<Navigate to = "/"/>: <Login />} />
         <Route path = "/signup" element = {<SignUp />} />
-        <Route path = "/cart" element = {<Cart />} />
-        <Route path = '/allproducts' element = {<AllProducts />} />
+        <Route path = "/cart" element = {<Cart/>} />
+        <Route path = '/allproducts' element = {<AllProducts/>} />
+        <Route path = "/mystore" element = {<MyStore/>} />
+        <Route path = "/addproduct" element = {<AddProduct/>} />
+        <Route path = "/addcategory" element = {<AddCategory/>} />
       </Routes>
     </div>
   )

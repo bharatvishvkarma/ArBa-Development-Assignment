@@ -7,11 +7,12 @@ function Home() {
 
     const navigate = useNavigate()
     const [load,setLoad] = useState(false)
+    let terms = localStorage.getItem('terms') || false
     return (
         <>
             <AllProducts setLoad = {setLoad}/>
             {
-                load?<div className={styles.terms}>
+                load && !terms?<div className={styles.terms}>
                     <h3>TERMS & CONDITIONS</h3>
                     <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -41,7 +42,11 @@ function Home() {
                     </p>
                     <div style={{position:"absolute",bottom:"10px"}}>
                         <button onClick={()=>setLoad(false)} style={{marginRight:"40px"}}>Cancel</button>
-                        <button onClick={()=>setLoad(false)}>Accept</button>
+                        <button onClick={()=>{
+                            localStorage.setItem('terms',true)
+                            setLoad(false)
+                        }
+                            }>Accept</button>
                         
                     </div>
                 </div>:null

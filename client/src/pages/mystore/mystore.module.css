@@ -1,0 +1,36 @@
+.choose{
+    display: flex;
+    /* justify-content: space-evenly; */
+    width: 80%;
+    margin: auto;
+    background-color: wheat;
+}
+
+.choose div{
+    padding:5px;
+    text-align: center;
+    width:50%
+}
+
+.select{
+    width: 50%;
+    background-color: teal;
+    color: white;
+    font-size: bold;
+}
+.container{
+    margin-top: 50px;
+}
+
+table,td,th,tr{
+    border:1px solid black
+}
+div{
+    margin:auto;
+    width: 100%;
+}
+table{
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+}
