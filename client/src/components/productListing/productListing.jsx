@@ -15,7 +15,8 @@ function ProductListing({ product,user }) {
                 
                 {
                     product.filter((item)=>{
-                        return user._id === item._id
+                        // console.log(user._id, item._id)
+                        return user._id === item.owner
                     })
                     .map((item, index) => (
                         <tr>

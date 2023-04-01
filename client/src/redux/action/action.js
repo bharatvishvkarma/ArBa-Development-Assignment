@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = `http://localhost:7777/user/loggedInUser`
+const url = `https://long-tan-sea-lion-gown.cyclic.app/user/loggedInUser`
 function getData(token){
     return function (dispatch,getState){
         axios.get(url,{
