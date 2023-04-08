@@ -28,7 +28,7 @@ function Navbar() {
                             <img onClick={() => setList(!list)} className={styles.avatar} src={user.avatar} />
                             {list ? <div className={styles.list}>
                                 <li><Link className={styles.link} onClick={() => setList(!list)} to="/mystore">My store</Link></li>
-                                <li><Link className={styles.link} onClick={() => setList(!list)} to="/">Profile</Link></li>
+                                <li><Link className={styles.link} onClick={() => setList(!list)} to="/myprofile">Profile</Link></li>
                                 <li className={styles.link} onClick={() =>{
                                     dispatch(logout())
                                     localStorage.removeItem('token')

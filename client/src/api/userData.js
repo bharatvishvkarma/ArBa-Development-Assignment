@@ -19,8 +19,17 @@ export const getAllProducts = async()=>{
     return await axios.get(`${url}/product/getall`)
 }
 
+export const getSearchedProduts = async(data)=>{
+   return await axios.get(`${url}/product/getall?title=${data.title}&price=${data.sort}`)
+   
+}
+
 export const getCategories = async()=>{
     return await axios.get(`${url}/category/get`)
+}
+
+export const getSearchedCategory = async(name) =>{
+    return await axios.get(`${url}/category/get?name=${name}`)
 }
 
 export const addOneCategory = async(data)=>{
@@ -49,4 +58,12 @@ export const updateProduct = async(data,id)=>{
 
 export const updateCategory = async(data,id)=>{
     return await axios.patch(`${url}/category/update/${id}`,data)
+}
+
+export const updateUserData  = async(data,id)=>{
+    return await axios.patch(`${url}/user/update/${id}`,data)
+}
+
+export const updateNewPassword = async(data,id)=>{
+    return await axios.patch(`${url}/user/changepassword/${id}`,data)
 }

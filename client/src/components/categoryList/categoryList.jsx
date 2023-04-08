@@ -52,6 +52,14 @@ function CategoryListing({ category =[],user }) {
                         </tr>
                     ))
                 }
+                {
+                    category.filter((item)=>{
+                        // console.log(user._id,item._id)
+                        return user._id === item.owner
+                    }).length == 0?<div>
+                        <h2>No Data</h2>
+                    </div>:null
+                }
             </table>
 
         </div>

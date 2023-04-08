@@ -22,7 +22,19 @@ async function addProduct(req,res){
 
 async function getAllProducts(req,res){
     try{
-        const Products = await Product.find()
+        let title = req.query.title
+        let price = req.query.price
+        let sort
+        price == 'lth'?sort = 1:sort=-1
+        const regex1 = new RegExp(title,"i")
+        let Products
+        if(price) {
+            Products = await Product.find({title:{$regex:regex1}}).sort({price:sort})
+        }
+        else Products = await Product.find({title:{$regex:regex1}})
+            
+        //  Products = await Product.find()
+        
         return res.send({
             Products
         })

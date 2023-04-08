@@ -3,6 +3,8 @@ const Category = require('../database/category.js')
 async function createCategory(req,res){
     try{
         const data = req.body
+        
+        
 
         await Category.create(data)
 
@@ -20,7 +22,18 @@ async function createCategory(req,res){
 
 async function getAllCategories(req,res){
     try{
-        let category = await Category.find()
+        const name = req.query.name
+        // console.log(name)
+        let category
+        // if(name){
+            const regex = new RegExp(name, "i")
+            category = await Category.find({name:{$regex:regex}})
+            
+        // }
+        // else{
+        //     category = await Category.find()
+        // }
+        
         return res.send({
             category
         })

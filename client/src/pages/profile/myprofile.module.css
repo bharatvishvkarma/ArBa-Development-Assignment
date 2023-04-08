@@ -1,0 +1,19 @@
+.profileContainer{
+    margin-top: 50px;
+    text-align: center;
+    border-bottom: 1px solid rgb(172, 169, 169);
+}
+
+.profileContainer img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.tc{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+}

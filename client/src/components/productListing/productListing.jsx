@@ -51,6 +51,14 @@ function ProductListing({ product,user }) {
                         </tr>
                     ))
                 }
+                {
+                    product.filter((item)=>{
+                        return user._id === item.owner
+                    }).length<1?<div>
+                        <h2>No data</h2>
+                    </div>:null
+                    
+                }
             </table>
 
         </div>

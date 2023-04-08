@@ -14,6 +14,7 @@ import AllProducts from './components/allProducts/allProducts';
 import MyStore from './pages/mystore/mystore';
 import AddProduct from './pages/addProduct/addproduct';
 import AddCategory from './pages/addProduct/addcategory';
+import MyProfile from './pages/profile/myprofile';
 
 
 function App(){
@@ -39,6 +40,7 @@ function App(){
         <Route path = "/mystore" element = {<MyStore/>} />
         <Route path = "/addproduct" element = {<AddProduct/>} />
         <Route path = "/addcategory" element = {<AddCategory/>} />
+        <Route path = '/myprofile' element = {<MyProfile />} />
       </Routes>
     </div>
   )

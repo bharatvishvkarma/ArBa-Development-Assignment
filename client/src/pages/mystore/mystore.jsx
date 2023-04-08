@@ -9,6 +9,8 @@ import addCategory from '../../redux/action/addCategory'
 import AddCategory from '../addProduct/addcategory'
 import AddProduct from '../addProduct/addproduct'
 import addProductstoStore from '../../redux/action/productaction'
+import CategoryFilter from '../../components/filter/categoryfilter'
+import ProductFilter from '../../components/filter/productfilter'
 
 function MyStore(){
     const [choose,setChoose] = useState("category")
@@ -18,6 +20,8 @@ function MyStore(){
     const dispatch = useDispatch()
     const [addProcuctBox, setaddProcuctBox] = useState(false)
     const [addCetogoryBox ,setCategoryBox] = useState(false)
+    const [filter1,setFilter1] = useState(false)
+    const [filter2,setFilter2] = useState(false)
     // const [refresh,setRefresh] = useState(false)
 
     useEffect(()=>{
@@ -30,7 +34,7 @@ function MyStore(){
     
     function refreshCategory(){
         setaddProcuctBox(false)
-                    setCategoryBox(false)
+        setCategoryBox(false)
         getCategories()
         .then((res)=>{
             // console.log(res.data)
@@ -40,7 +44,7 @@ function MyStore(){
 
     function refreshProducts(){
         setaddProcuctBox(false)
-                    setCategoryBox(false)
+        setCategoryBox(false)
         getAllProducts()
         .then((res)=>{
             console.log(res)
@@ -73,7 +77,7 @@ function MyStore(){
                 <div >
                     <div  style={{textAlign:"left"}}>
                     <button onClick={refreshProducts} >Refresh</button>
-                    <button >Filter</button>
+                    <button onClick={()=>setFilter2(true)}>Filter</button>
                     <button  onClick={()=>setaddProcuctBox(!addProcuctBox)}>Add Product</button>
                          
                     </div>
@@ -86,7 +90,7 @@ function MyStore(){
                             refreshCategory
                             
                             } >Refresh</button>
-                        <button >Filter</button>
+                        <button onClick={()=>setFilter1(true)}>Filter</button>
                         <button  onClick={()=>setCategoryBox(!addCetogoryBox)}>Add Category</button>
                     </div>
                     <CategoryListing category = {categories} user = {user}/>
@@ -97,6 +101,12 @@ function MyStore(){
             }
             {
                 addProcuctBox ? <AddProduct setaddProcuctBox = {setaddProcuctBox}/>:<div></div>
+            }
+            {
+                filter1?<CategoryFilter setFilter1 = {setFilter1}/>:null
+            }
+            {
+                filter2?<ProductFilter setFilter2={setFilter2} />:null
             }
             
             
