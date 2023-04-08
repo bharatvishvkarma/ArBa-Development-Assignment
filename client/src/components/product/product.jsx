@@ -19,8 +19,6 @@ function Product({data,addQuantity,substractQuantity}) {
                     {
                        quantity<1?<button className={styles.addToCardbtn} onClick={()=>{addQuantity(_id)}} >Add to cart</button>:
                         <div className={styles.twobtn}>
-                            
-                            
                             <button onClick={(e)=>{
                                 e.stopPropagation()
                                 substractQuantity(_id)

@@ -1,7 +1,6 @@
 .choose{
     display: flex;
     /* justify-content: space-evenly; */
-    width: 80%;
     margin: auto;
     background-color: wheat;
 }
@@ -19,6 +18,8 @@
     font-size: bold;
 }
 .container{
+    width: 80%;
+    margin: auto;
     margin-top: 50px;
 }
 
@@ -31,6 +32,14 @@ div{
 }
 table{
     margin: auto;
-    width: 80%;
+    width: 100%;
     margin-top: 20px;
+}
+
+div>div>button{
+    border: none;
+    color: white;
+    background-color: teal;
+    padding: 5px;
+    cursor: pointer;
 }

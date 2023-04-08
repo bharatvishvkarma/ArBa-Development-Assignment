@@ -2,6 +2,7 @@ import { useState } from "react";
 import AllProducts from "../../components/allProducts/allProducts";
 import styles from './home.module.css'
 import { useNavigate } from "react-router-dom";
+import ImageCarousel from "../../components/corousel/courusel";
 
 function Home() {
 
@@ -10,6 +11,7 @@ function Home() {
     let terms = localStorage.getItem('terms') || false
     return (
         <>
+            <ImageCarousel />
             <AllProducts setLoad = {setLoad}/>
             {
                 load && !terms?<div className={styles.terms}>

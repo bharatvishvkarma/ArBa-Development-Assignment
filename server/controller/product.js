@@ -53,8 +53,10 @@ async function deleteProduct(req, res) {
     try{
         const id = req.params.id
         await Product.findByIdAndDelete(id)
+        const Products = await Product.find()
         return res.send({
-            message:"deleted"
+            message:"deleted",
+            Products
         })
     }
     catch(err){
@@ -68,10 +70,12 @@ async function updateProduct(req,res){
     try{
         const id = req.params.id
         const data = req.body
+        console.log(id,data)
         await Product.findByIdAndUpdate(id,data)
-
+        let product = await Product.find()
         return res.send({
-            message:"updated"
+            message:"updated",
+            product
         })
     }
     catch(err){

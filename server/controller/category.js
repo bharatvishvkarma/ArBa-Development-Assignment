@@ -51,12 +51,14 @@ async function getSingleCategory(req, res){
 async function deleteCategory(req, res){
     try{
         const id = req.params.id
-        await Category.deleteById(id)
-        // let category = await Category.find()
+        console.log(id)
+        await Category.findByIdAndDelete(id)
+        let category = await Category.find()
+
 
         return res.send({
             message:"deleted",
-            // category
+            category
         })
     }
     catch(err){
@@ -70,11 +72,11 @@ async function updateCategory(req,res){
     try{
         const id = req.params.id
         const data = req.body
-        const updateCategory = await Category.findByIdAndUpdate(id,data)
-
+        await Category.findByIdAndUpdate(id,data)
+        let category = await Category.find()
         return res.send({
             message: "updated",
-            updateCategory
+            category
         })
     }
     catch(err){

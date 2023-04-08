@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url =  'https://long-tan-sea-lion-gown.cyclic.app'
+const url = 'http://localhost:7777'
+// const url =  'https://long-tan-sea-lion-gown.cyclic.app'
 
 export const updateImg = async (file)=>{
     return await axios.post(`${url}/file/upload`,file)
@@ -28,4 +29,24 @@ export const addOneCategory = async(data)=>{
 
 export const addProduct = async(data)=>{
     return await axios.post(`${url}/product/add`,data)
+}
+
+export const deleteOneProduct = async(id)=>{
+    return await axios.delete(`${url}/product/delete/${id}`)
+}
+
+export const deleteOneCategory = async(id)=>{
+    return await axios.delete(`${url}/category/delete/${id}`)
+}
+
+export const getOneProduct = async(id)=>{
+    return await axios.get(`${url}/product/get/${id}`)
+}
+
+export const updateProduct = async(data,id)=>{
+    return await axios.patch(`${url}/product/update/${id}`,data)
+}
+
+export const updateCategory = async(data,id)=>{
+    return await axios.patch(`${url}/category/update/${id}`,data)
 }
