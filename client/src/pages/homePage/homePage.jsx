@@ -12,7 +12,7 @@ function Home() {
     return (
         <>
             <ImageCarousel />
-            <AllProducts setLoad = {setLoad}/>
+            <AllProducts setLoad = {setLoad} limit = {8}/>
             {
                 load && !terms?<div className={styles.terms}>
                     <h3>TERMS & CONDITIONS</h3>

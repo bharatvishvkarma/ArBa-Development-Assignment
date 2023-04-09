@@ -58,10 +58,10 @@
     border: none;
     background-color: transparent;
     color: white;
-    margin-top: 5px;
+    margin-top: 0px;
 }
 .twobtn p{
-    margin-top: -3px;
+    margin-top: -10px;
 }
 .addToCardbtn{
     background-color: transparent;

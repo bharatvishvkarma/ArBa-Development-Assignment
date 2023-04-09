@@ -20,7 +20,7 @@ function Navbar() {
                             <h1>ArBa </h1>
                         </div>
                         <div className={styles.profileImg}>
-                            <div onClick={()=>navigate('/cart')} style={{ display: "flex", gap: "6px", alignItems: "center", color: "blue" }}>
+                            <div onClick={()=>navigate('/cart')} style={{ display: "flex", gap: "0px", alignItems: "center", color: "blue" }}>
                                 <BsCartDashFill />
                                 <p>{cartProducts.length}</p>
 
@@ -32,6 +32,9 @@ function Navbar() {
                                 <li className={styles.link} onClick={() =>{
                                     dispatch(logout())
                                     localStorage.removeItem('token')
+                                    localStorage.removeItem('cart')
+                                    localStorage.removeItem('terms')
+                                    localStorage.removeItem('allProducts')
                                     setList(!list)
                                     navigate('/login')
                                 } } to="/">Logout</li>

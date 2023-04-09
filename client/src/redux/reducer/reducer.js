@@ -24,7 +24,7 @@ const reducer = (state=intialData,action)=>{
         localStorage.setItem('cart',JSON.stringify(action.payload))
     }
     if(action.type === 'logout'){
-        state = {...state, isLoggedIn:false,user:{}}
+        state = {...state, isLoggedIn:false,user:{},products:[],cartProducts:[]}
     }
     if(action.type === 'addCategory'){
         state = {...state, categories:action.payload}

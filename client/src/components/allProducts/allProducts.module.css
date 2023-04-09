@@ -12,3 +12,25 @@
     width: 80%;
     margin: auto;
 }
+
+@media screen and (max-width:950px) {
+    .allProducts{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        
+    }
+}
+@media screen and (max-width:720px) {
+    .allProducts{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        
+    }
+}
+@media screen and (max-width:560px) {
+    .allProducts{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        
+    }
+}
