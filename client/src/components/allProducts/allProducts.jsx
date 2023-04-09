@@ -90,7 +90,8 @@ function AllProducts({setLoad = function(){}}) {
             {/* <Product /> */}
             <div className={styles.allProducts}>
                 {
-                    products.length > 0 ? products.map((item, index) => {
+                    products.length > 0 ? products
+                    .map((item, index) => {
                         return (
                             <Product key={index} data={item} addQuantity={addQuantity}
                                 substractQuantity={substractQuantity} />

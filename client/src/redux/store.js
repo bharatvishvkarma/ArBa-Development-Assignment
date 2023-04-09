@@ -4,6 +4,6 @@ import logger from 'redux-logger'
 import reducer from './reducer/reducer'
 
 
-const store = legacy_createStore(reducer,applyMiddleware(thunk,logger))
+const store = legacy_createStore(reducer,applyMiddleware(thunk))
 
 export default store

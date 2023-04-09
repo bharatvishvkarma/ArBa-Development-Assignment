@@ -4,13 +4,15 @@ import { useSelector } from 'react-redux'
 import { getCategories } from '../../api/userData'
 import {addOneCategory,updateImg} from '../../api/userData'
 import { useNavigate } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import addCategory from '../../redux/action/addCategory'
 
 function AddCategory({setCategoryBox}){
     const {user,categories} = useSelector(state =>state)
     const [category,setCategoty] = useState({})
     const [file, setFile] = useState(null)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         getCategories()
@@ -24,7 +26,7 @@ function AddCategory({setCategoryBox}){
     }
     // console.log(category)
 
-    async function addCategory(){
+    async function addOnetoCategory(){
         let obj = {...category}
         obj.owner = user._id
         // console.log(obj)
@@ -40,6 +42,12 @@ function AddCategory({setCategoryBox}){
         addOneCategory(obj)
         .then((res)=>{
             setCategoryBox(false)
+            // console.log(res)
+            getCategories()
+            .then((response)=>{
+                dispatch(addCategory(response.data.category))
+            })
+            
             // console.log(res.data)
             // navigate('/mystore')
         })
@@ -66,7 +74,7 @@ function AddCategory({setCategoryBox}){
                     accept = ".jpeg, .jpg, .png"
                     onChange={handleFile}
             />
-            <button disabled = {!category.name || !category.slug} onClick={addCategory}>Add Category</button>
+            <button disabled = {!category.name || !category.slug} onClick={addOnetoCategory}>Add Category</button>
         </div>
     )
 }

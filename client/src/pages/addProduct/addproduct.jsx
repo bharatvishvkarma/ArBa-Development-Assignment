@@ -36,7 +36,7 @@ function AddProduct({setaddProcuctBox}) {
             .then((res) => {
                 console.log(res)
                 products.push(res.data.product)
-                // dispatch(addProductstoStore(products))
+                dispatch(addProductstoStore(products))
                 toast('Product added successfully',{
                     type: 'success',
                 })
